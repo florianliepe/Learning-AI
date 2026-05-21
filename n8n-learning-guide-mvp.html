@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>n8n Learning Guide MVP</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1f0eb;
+      --text: #28251d;
+      --muted: #6f6c64;
+      --border: #d9d5cd;
+      --primary: #01696f;
+      --primary-hover: #0c4e54;
+      --success: #2f6b2f;
+      --error: #a13544;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(34, 30, 22, 0.08);
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --max: 980px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    .hero {
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #dcebea;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    h1 {
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.05;
+      margin: 14px 0 14px;
+      max-width: 12ch;
+    }
+    p.lead {
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pill {
+      background: var(--surface-2);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14px;
+    }
+    .pill strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font: inherit;
+      color: var(--text);
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 18px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover { background: var(--primary-hover); }
+    button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .status {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .status.success { color: var(--success); }
+    .status.error { color: var(--error); }
+    .result {
+      display: grid;
+      gap: 16px;
+    }
+    .module {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+    }
+    .module h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .code {
+      background: #1f2430;
+      color: #ecf0f7;
+      border-radius: 12px;
+      padding: 14px;
+      overflow: auto;
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .meta { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">AI-enabled learning MVP</span>
+      <h1>Build your first n8n workflow learning journey</h1>
+      <p class="lead">Dieses kleine Frontend sammelt Lernbedarf für n8n und sendet ihn an einen n8n Webhook. Der Workflow erzeugt daraus eine strukturierte Learning Journey für Management-Berater als Endnutzer.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Learning request</h2>
+        <div class="meta">
+          <div class="pill"><strong>Persona</strong>Management Consulting End User</div>
+          <div class="pill"><strong>Target App</strong>n8n</div>
+          <div class="pill"><strong>Primary KPI</strong>Adoption</div>
+          <div class="pill"><strong>Primary KPI</strong>Time to Competence</div>
+        </div>
+
+        <form id="learningForm">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="e.g. Florian" required />
+          </div>
+          <div>
+            <label for="learning_goal">Learning goal</label>
+            <input id="learning_goal" name="learning_goal" type="text" placeholder="Build my first n8n workflow" required />
+          </div>
+          <div>
+            <label for="current_level">Current level</label>
+            <select id="current_level" name="current_level">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+          <div>
+            <label for="use_case">Use case</label>
+            <textarea id="use_case" name="use_case" placeholder="Describe the workflow you want to build in n8n" required></textarea>
+          </div>
+          <div>
+            <label for="pain_point">Main pain point</label>
+            <textarea id="pain_point" name="pain_point" placeholder="What blocks you today?"></textarea>
+          </div>
+          <div>
+            <label for="webhook_url">n8n webhook URL</label>
+            <input id="webhook_url" name="webhook_url" type="url" placeholder="https://your-n8n/webhook/learning-guide-mvp" required />
+          </div>
+
+          <div class="actions">
+            <button type="submit">Generate learning journey</button>
+            <button type="button" class="secondary" id="loadDemo">Load demo data</button>
+            <span id="status" class="status">Ready.</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card result">
+        <div>
+          <h2>Journey output</h2>
+          <p class="small">Das Frontend erwartet ein JSON-Response aus n8n. Nutze im Workflow am besten einen strukturierten Output.</p>
+        </div>
+
+        <div id="journeyOutput">
+          <div class="module">
+            <h3>No journey yet</h3>
+            <p class="small">Sende eine Anfrage an deinen n8n Webhook, damit hier die Learning Journey angezeigt wird.</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="small">Expected response format</p>
+          <pre class="code">{
+  "journey_title": "Build your first n8n workflow and use an AI Agent",
+  "modules": [
+    {
+      "title": "Understand the trigger",
+      "format": "mini-guide",
+      "objective": "Know when and why a webhook starts the flow"
+    }
+  ],
+  "kpis": ["adoption", "time_to_competence"],
+  "next_step": "Run the practice workflow in n8n"
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('learningForm');
+    const output = document.getElementById('journeyOutput');
+    const statusEl = document.getElementById('status');
+    const demoBtn = document.getElementById('loadDemo');
+
+    demoBtn.addEventListener('click', () => {
+      document.getElementById('name').value = 'Florian';
+      document.getElementById('learning_goal').value = 'Build my first n8n workflow';
+      document.getElementById('current_level').value = 'beginner';
+      document.getElementById('use_case').value = 'I want to create a simple learning workflow in n8n and then extend it with an AI Agent.';
+      document.getElementById('pain_point').value = 'I know the idea but need a clear build sequence and learning modules.';
+      statusEl.textContent = 'Demo data loaded.';
+      statusEl.className = 'status';
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending request...';
+      statusEl.className = 'status';
+
+      const payload = {
+        name: form.name.value,
+        role: 'Management Consulting End User',
+        target_app: 'n8n',
+        learning_goal: form.learning_goal.value,
+        current_level: form.current_level.value,
+        use_case: form.use_case.value,
+        pain_point: form.pain_point.value,
+        primary_kpis: ['adoption', 'time_to_competence'],
+        learning_stage: 'workflow_building_then_ai_agent'
+      };
+
+      try {
+        const res = await fetch(form.webhook_url.value, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('HTTP ' + res.status);
+        }
+
+        const data = await res.json();
+        renderJourney(data);
+        statusEl.textContent = 'Journey generated successfully.';
+        statusEl.className = 'status success';
+      } catch (err) {
+        statusEl.textContent = 'Request failed: ' + err.message + '. Check webhook URL and CORS setup.';
+        statusEl.className = 'status error';
+      }
+    });
+
+    function renderJourney(data) {
+      const modules = Array.isArray(data.modules) ? data.modules : [];
+      output.innerHTML = '';
+
+      const header = document.createElement('div');
+      header.className = 'module';
+      header.innerHTML = `
+        <h3>${escapeHtml(data.journey_title || 'Learning Journey')}</h3>
+        <p class="small"><strong>Next step:</strong> ${escapeHtml(data.next_step || 'n/a')}</p>
+        <p class="small"><strong>KPIs:</strong> ${Array.isArray(data.kpis) ? data.kpis.map(escapeHtml).join(', ') : 'n/a'}</p>
+      `;
+      output.appendChild(header);
+
+      modules.forEach((m, index) => {
+        const el = document.createElement('div');
+        el.className = 'module';
+        el.innerHTML = `
+          <h3>${index + 1}. ${escapeHtml(m.title || 'Module')}</h3>
+          <p class="small"><strong>Format:</strong> ${escapeHtml(m.format || 'n/a')}</p>
+          <p>${escapeHtml(m.objective || m.description || 'No objective provided.')}</p>
+        `;
+        output.appendChild(el);
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>
